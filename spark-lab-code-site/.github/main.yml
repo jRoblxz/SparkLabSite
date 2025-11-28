@@ -1,0 +1,41 @@
+name: 🚀 Deploy test website on push
+
+on:
+  push:
+    branches:
+      - main
+      - Dev
+  pull_request:
+    branches:
+      - main
+      - Dev
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4.1.6
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ FTP_HOST}}
+          username: ${{ FTP_USER}}
+          password: ${{ FTP_SENHA}}
+          exclude: |
+            public/**
+            vendor/**
+            plugin/**
+            Banco_de_Dados_CR/**
+            crons/**
+            storage/**
+            .github
+            .github/**
+            .env
+            composer.json
+            composer.lock
+            .htaccess
+            config.php
+            config.js
