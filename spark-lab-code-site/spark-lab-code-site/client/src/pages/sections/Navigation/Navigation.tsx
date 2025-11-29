@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLocation } from 'wouter';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,12 @@ export default function Navigation() {
       transition: { duration: 0.5 },
     },
   };
+  // Use useLocation para obter a função navigate do Wouter
+    const [, navigate] = useLocation();
+  
+    const handleHomeClick = () => {
+      navigate('/'); // Use a função navigate do Wouter
+    };
 
   return (
     <nav className="fixed top-0 w-full bg-[#e4e0d7] shadow-lg z-50">
@@ -43,7 +50,10 @@ export default function Navigation() {
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
-            <img src="/logo.png" alt="Spark Lab Code" className="h-50 w-auto" />
+            <span onClick={handleHomeClick} className="cursor-pointer w-auto h-16" >
+              <img src="/logo4.png" alt="Spark Lab Code" className="h-full w-auto" />
+            </span>
+            
           </motion.div>
 
           {/* Desktop Navigation */}

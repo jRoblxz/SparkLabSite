@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import '@/App.css';
 
 // Importe os novos componentes de seção
-import { Navigation } from '@/pages/sections/Navigation/Navigation';
+import Navigation  from '@/pages/sections/Navigation/Navigation';
 import { HeroSection } from '@/pages/sections/HeroSection/HeroSection';
 import { AboutSection } from '@/pages/sections/AboutSection/AboutSection';
 import { SkillsSection } from '@/pages/sections/Skills/SkillSection';
@@ -43,7 +43,7 @@ function Portfólio() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-      <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
+      <Navigation />
 
       <main>
         <HeroSection scrollToSection={scrollToSection} />

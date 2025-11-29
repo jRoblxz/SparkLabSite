@@ -5,25 +5,48 @@ on:
     branches:
       - main
       - Dev
-  pull_request:
-    branches:
-      - main
-      - Dev
+  # Removendo pull_request se o deploy não deve ocorrer ao abrir um PR.
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - Dev
 
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
+      
+      # 1. Obter o Código (Step Corrigida)
       - name: 🚚 Get latest code
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4
+      
+      # 2. Configurar o Node.js (Step Separada Corrigida)
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm' # Adiciona cache para pnpm
+      
+      # REMOVIDA: A step "Change Directory" é desnecessária.
 
-      - name: 📂 Sync files
+      # 3. Instalar dependências e fazer o build
+      # Usa working-directory para navegar até a raiz do projeto React.
+      - name: Install dependencies and build
+        run: |
+          pnpm install 
+          pnpm run build
+        working-directory: ./spark-lab-code-site/client/
+
+      # 4. Fazer o Deploy do Conteúdo da pasta 'dist'
+      - name: 📂 Sync files (FTP Deploy)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ FTP_HOST}}
-          username: ${{ FTP_USER}}
-          password: ${{ FTP_SENHA}}
+          server: ${{FTP_HOST}}
+          username: ${{FTP_USER}}
+          password: ${{FTP_SENHA}}
+          local-path: ./spark-lab-code-site/client/dist/
+          remote-path: /public_html/
           exclude: |
             public/**
             vendor/**
