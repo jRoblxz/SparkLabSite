@@ -30,11 +30,19 @@ jobs:
           # *CRÍTICO*: Use o package manager nativo do setup-node
           cache-dependency-path: 'spark-lab-code-site/pnpm-lock.yaml' # Não roda a instalação aqui, fazemos no passo 3
 
-      # 3. Instalar dependências e fazer o build
-      # Usa working-directory para navegar até a raiz do projeto React.
-      - name: Install dependencies and build
-        run: pnpm install 
+      # 3. Instalar dependências (Ação CRÍTICA: Forçando o shell a reconhecer o pnpm)
+      - name: 📦 Install dependencies
+        # O GitHub Actions pode usar `shell: bash` ou `shell: sh`
+        # Adicione o 'working-directory' para o 'run'
+        run: pnpm install
         working-directory: ./spark-lab-code-site/
+        # Adicione a Ação de Cache (opcional, mas ajuda)
+          uses: actions/cache@v4 # Adiciona cache para otimizar
+          with:
+            path: node_modules
+            key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+            restore-keys: |
+              ${{ runner.os }}-pnpm-
 
         # 4. Fazer o Build
       - name: 🔨 Build project
