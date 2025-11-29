@@ -36,7 +36,7 @@ jobs:
         run: |
           pnpm install 
           pnpm run build
-        working-directory: ./spark-lab-code-site/client/
+        working-directory: ./spark-lab-code-site/
 
       # 4. Fazer o Deploy do Conteúdo da pasta 'dist'
       - name: 📂 Sync files (FTP Deploy)
