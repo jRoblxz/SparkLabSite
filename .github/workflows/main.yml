@@ -21,28 +21,27 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
       
-      # 2. Configurar o Node.js (Step Separada Corrigida)
-      - name: 🛠️ Setup Node.js
+      # 2. Configurar o Node.js e PNPM (Juntos)
+      - name: 🛠️ Setup Node.js and PNPM
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm' # Adiciona cache para pnpm
-      
-      - name: 🚀 Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 8 
-          run_install: false # Não roda a instalação aqui, fazemos no passo 3
+          cache: 'pnpm'
+          # *CRÍTICO*: Use o package manager nativo do setup-node
+          cache-dependency-path: 'spark-lab-code-site/pnpm-lock.yaml' # Não roda a instalação aqui, fazemos no passo 3
 
       # 3. Instalar dependências e fazer o build
       # Usa working-directory para navegar até a raiz do projeto React.
       - name: Install dependencies and build
-        run: |
-          pnpm install 
-          pnpm run build
+        run: pnpm install 
         working-directory: ./spark-lab-code-site/
 
-      # 4. Fazer o Deploy do Conteúdo da pasta 'dist'
+        # 4. Fazer o Build
+      - name: 🔨 Build project
+        run: pnpm run build
+        working-directory: ./spark-lab-code-site/
+
+      # 5. Fazer o Deploy do Conteúdo da pasta 'dist'
       - name: 📂 Sync files (FTP Deploy)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
