@@ -28,8 +28,11 @@ jobs:
           node-version: '20'
           cache: 'pnpm' # Adiciona cache para pnpm
       
-      - name: ⬇️ Install pnpm globally
-        run: npm install -g pnpm
+      - name: 🚀 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 
+          run_install: false # Não roda a instalação aqui, fazemos no passo 3
 
       # 3. Instalar dependências e fazer o build
       # Usa working-directory para navegar até a raiz do projeto React.
