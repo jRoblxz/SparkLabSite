@@ -52,7 +52,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_SENHA }}
-          local-dir: ./spark-lab-code-site/dist/
+          local-dir: ./spark-lab-code-site/dist/public/
           server-dir: /public_html/
           exclude: |
             public/**
