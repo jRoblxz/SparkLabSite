@@ -25,21 +25,25 @@ jobs:
       - name: 🛠️ Setup Node.js and PNPM
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'pnpm'
-          # *CRÍTICO*: Use o package manager nativo do setup-node
-          cache-dependency-path: 'spark-lab-code-site/pnpm-lock.yaml' # Não roda a instalação aqui, fazemos no passo 3
+          node-version: '20' # Não roda a instalação aqui, fazemos no passo 3
 
-      # 3. Instalar dependências e fazer o build
-      # Usa working-directory para navegar até a raiz do projeto React.
-      - name: Install dependencies and build
-        run: pnpm install 
-        working-directory: ./spark-lab-code-site/
+      # 3. CRÍTICO: Instala o PNPM globalmente e o utiliza
+      # Usamos 'shell: bash' para garantir que o comando export seja executado.
+      - name: 📦 Install PNPM and Build
+        shell: bash
+        run: |
+          # Instala o pnpm globalmente e força a atualização do PATH
+          npm install -g pnpm --registry=https://registry.npmjs.org/
+          
+          # Encontra o caminho do binário do pnpm e adiciona ao PATH temporariamente
+          PNPM_BIN=$(npm prefix -g)/bin
+          echo "Adicionando $PNPM_BIN ao PATH"
+          export PATH=$PATH:$PNPM_BIN
 
-        # 4. Fazer o Build
-      - name: 🔨 Build project
-        run: pnpm run build
-        working-directory: ./spark-lab-code-site/
+          # Navega para o diretório e executa os comandos, que agora devem encontrar o pnpm
+          cd ./spark-lab-code-site/
+          pnpm install
+          pnpm run build
 
       # 5. Fazer o Deploy do Conteúdo da pasta 'dist'
       - name: 📂 Sync files (FTP Deploy)
