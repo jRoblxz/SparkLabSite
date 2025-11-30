@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - Dev
   # Removendo pull_request se o deploy não deve ocorrer ao abrir um PR.
   # pull_request:
   #   branches:
