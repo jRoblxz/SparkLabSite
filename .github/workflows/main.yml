@@ -49,9 +49,9 @@ jobs:
       - name: 📂 Sync files (FTP Deploy)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST}}
-          username: ${{ secrets.FTP_USER}}
-          password: ${{ secrets.FTP_SENHA}}
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_SENHA }}
           local-dir: ./spark-lab-code-site/dist/
           server-dir: /public_html/
           exclude: |
