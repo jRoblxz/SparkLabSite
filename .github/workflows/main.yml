@@ -40,7 +40,7 @@ jobs:
           echo "Adicionando $PNPM_BIN ao PATH"
           export PATH=$PATH:$PNPM_BIN
 
-          # Navega para o diretório e executa os comandos, que agora devem encontrar o pnpm
+          # Navega para o diretório e executa os comandos, que agora devem encontrar o pnpm l
           cd ./spark-lab-code-site/
           pnpm install
           pnpm run build
