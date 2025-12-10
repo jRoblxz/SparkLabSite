@@ -1,64 +1,78 @@
-import React from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import React from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
 
 interface Skill {
   name: string;
   level: number;
 }
 
-const skills: Skill[] = [
-  { name: 'HTML', level: 4},
-]
+const skills: Skill[] = [{ name: "CSS", level: 4 }];
 
 const Button = () => {
   return (
     <StyledPHP>
-       <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-      <div className="button-container">
-       
-        <button className="brutalist-button openai button-1">
-          <div className="openai-logo">
-            
-            <svg className='w-18 openai-icon'  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-              <title>file_type_html</title>
-              <polygon points="5.902 27.201 3.655 2 28.345 2 26.095 27.197 15.985 30 5.902 27.201" fill="#e44f26"/>
-              <polygon points="16 27.858 24.17 25.593 26.092 4.061 16 4.061 16 27.858" fill="#f1662a"/>
-              <polygon points="16 13.407 11.91 13.407 11.628 10.242 16 10.242 16 7.151 15.989 7.151 8.25 7.151 8.324 7.981 9.083 16.498 16 16.498 16 13.407" fill="#ebebeb"/>
-              <polygon points="16 21.434 15.986 21.438 12.544 20.509 12.324 18.044 10.651 18.044 9.221 18.044 9.654 22.896 15.986 24.654 16 24.65 16 21.434" fill="#ebebeb"/>
-              <polygon points="15.989 13.407 15.989 16.498 19.795 16.498 19.437 20.507 15.989 21.437 15.989 24.653 22.326 22.896 22.372 22.374 23.098 14.237 23.174 13.407 22.341 13.407 15.989 13.407" fill="#fff"/>
-              <polygon points="15.989 7.151 15.989 9.071 15.989 10.235 15.989 10.242 23.445 10.242 23.445 10.242 23.455 10.242 23.517 9.548 23.658 7.981 23.732 7.151 15.989 7.151" fill="#fff"/>
-            </svg>
-
-          </div>
-          <div className="button-text">
-            <span> </span>
-            <span>HTML</span>
-          </div>
-          {skills.map((skill, index) => (
-            
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="button-container">
+          <button className="brutalist-button openai button-1">
+            <div className="openai-logo">
+              <svg
+                className="openai-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 128 128"
+              >
+                <path
+                  fill="#1572B6"
+                  d="M18.814 114.123l-10.054-112.771h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"
+                />
+                <path
+                  fill="#33A9DC"
+                  d="M64.001 117.062l36.559-10.136 8.601-96.354h-45.16v106.49z"
+                />
+                <path
+                  fill="#fff"
+                  d="M64.001 51.429h18.302l1.264-14.163h-19.566v-13.831h34.681999999999995l-.332 3.711-3.4 38.114h-30.95v-13.831z"
+                />
+                <path
+                  fill="#EBEBEB"
+                  d="M64.083 87.349l-.061.018-15.403-4.159-.985-11.031h-13.882l1.937 21.717 28.331 7.863.063-.018v-14.39z"
+                />
+                <path
+                  fill="#fff"
+                  d="M81.127 64.675l-1.666 18.522-15.426 4.164v14.39l28.354-7.858.208-2.337 2.406-26.881h-13.876z"
+                />
+                <path
+                  fill="#EBEBEB"
+                  d="M64.048 23.435v13.831000000000001h-33.407999999999994l-.277-3.108-.63-7.012-.331-3.711h34.646zM64.001 51.431v13.831000000000001h-15.209l-.277-3.108-.631-7.012-.33-3.711h16.447z"
+                />
+              </svg>
+            </div>
+            <div className="button-text">
+              <span> </span>
+              <span>CSS</span>
+            </div>
+            {skills.map((skill, index) => (
               <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
-                    <motion.div
-                      className="h-full bg-[#E44F26] rounded-full"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${(skill.level / 5) * 100}%` }}
-                      transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}
-                      viewport={{ once: true }}
-                    />
+                <motion.div
+                  className="h-full bg-[#1572B6] rounded-full"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${(skill.level / 5) * 100}%` }}
+                  transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}
+                  viewport={{ once: true }}
+                />
               </div>
-
             ))}
-        </button>
-      </div>
+          </button>
+        </div>
       </motion.div>
     </StyledPHP>
   );
-}
+};
 
 const StyledPHP = styled.div`
   .button-container {
@@ -75,7 +89,7 @@ const StyledPHP = styled.div`
     justify-content: center;
     width: 1600px;
     height: 150px;
-    color: #FFF;
+    color: #fff;
     font-weight: bold;
     text-decoration: none;
     position: relative;
@@ -85,17 +99,19 @@ const StyledPHP = styled.div`
 
   /* Styles for the first button */
   .button-1 {
-    background-color: #f26f37; /*F1662A*/
-    border: 3px solid #E44F26;
+    background-color: #33a9dc; /*F1662A*/
+    border: 3px solid #1572b6;
     border-radius: 12px;
     box-shadow: 4px 4px 1px #000000;
   }
 
   .button-1:hover {
-    background-color: #F1662A;
-    border-color: #E44F26;
+    background-color: #33a9dc;
+    border-color: #1572b6;
     transform: translate(-6px, -6px) rotate(1deg);
-    box-shadow: 10px 10px 0 #000000, 15px 15px 20px rgba(64, 164, 122, 0.2);
+    box-shadow:
+      10px 10px 0 #000000,
+      15px 15px 20px rgba(64, 164, 122, 0.2);
   }
 
   .button-1::before,
@@ -245,6 +261,7 @@ const StyledPHP = styled.div`
   .brutalist-button:active .openai-text,
   .brutalist-button:active .button-text {
     transform: scale(0.95);
-  }`;
+  }
+`;
 
 export default Button;

@@ -42,7 +42,7 @@ function Portfólio() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen bg-[#e4e0d7] text-[#1e1c1c]">
       <Navigation />
 
       <main>
