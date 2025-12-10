@@ -35,7 +35,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
               </span>
             </motion.h1>
             <motion.p
-              className="text-2xl md:text-3xl text-[#1e1c1c] font-light mb-8"
+              className="text-2xl md:text-3xl text-[#e4e0d7] font-light mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -43,7 +43,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
               <Typewriter text="Software Developer" delay={120} />
             </motion.p>
             <motion.p
-              className="text-lg text-[#1e1c1c] mb-8 max-w-xl"
+              className="text-lg text-[#e4e0d7] mb-8 max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
@@ -61,12 +61,12 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
                 className="
                   relative overflow-hidden rounded-[0.5em] border-none 
                   bg-gradient-to-r from-[#8e2de2] to-[#4a00e0] 
-                  font-medium text-white tracking-wider 
+                  font-medium text-[#1e1c1c] tracking-wider 
                   cursor-pointer
                   transition-transform duration-150 ease-in-out active:scale-95
                   
                   before:content-[''] before:absolute before:top-0 before:left-[-10%] 
-                  before:w-[120%] before:h-full before:bg-[#1e1c1c]  before:skew-x-[30deg] 
+                  before:w-[120%] before:h-full before:bg-[#e4e0d7] hover:text-[#e4e0d7] before:skew-x-[30deg] 
                   before:z-0 before:transition-transform before:duration-400 
                   before:ease-[cubic-bezier(0.3,1,0.8,1)]
                   
@@ -87,12 +87,12 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
                 className="
                   relative overflow-hidden rounded-[0.5em] border-none 
                   bg-gradient-to-r from-[#8e2de2] to-[#4a00e0] 
-                  font-medium text-white tracking-wider 
+                  font-medium text-[#1e1c1c] tracking-wider 
                   cursor-pointer
                   transition-transform duration-150 ease-in-out active:scale-95
                   
                   before:content-[''] before:absolute before:top-0 before:left-[-10%] 
-                  before:w-[120%] before:h-full before:bg-[#1e1c1c]  before:skew-x-[30deg] 
+                  before:w-[120%] before:h-full before:bg-[#e4e0d7] hover:text-[#e4e0d7] before:skew-x-[30deg] 
                   before:z-0 before:transition-transform before:duration-400 
                   before:ease-[cubic-bezier(0.3,1,0.8,1)]
                   
@@ -121,7 +121,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Spotify"
-                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#1e1c1c] transition-colors" // Container principal
+                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors" // Container principal
               >
                 {/* Elemento de fundo que fará a animação */}
                 <span
@@ -141,7 +141,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
               </a>
               <a
                 href="mailto:joaopedro@example.com"
-                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#1e1c1c]  transition-colors"
+                className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212]  transition-colors"
               >
                 <span
                   className="absolute bottom-0 left-0 h-0 w-full bg-[#d00909] transition-all duration-300 ease-in-out group-hover:h-full" // A mágica acontece aqui!
@@ -161,7 +161,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
           >
             <div className="relative">
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-3xl opacity-30"
+                className="absolute inset-0 bg-[#7C3AED] rounded-full blur-3xl opacity-30"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.3, 0.5, 0.3],

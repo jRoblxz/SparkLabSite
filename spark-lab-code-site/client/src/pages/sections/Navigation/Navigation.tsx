@@ -40,7 +40,7 @@ export default function Navigation() {
     };
 
   return (
-    <nav className="fixed top-0 w-full bg-[#e4e0d7] shadow-lg z-50">
+    <nav className="fixed top-0 w-full bg-[#1e1c1c] shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -51,7 +51,7 @@ export default function Navigation() {
             className="flex items-center"
           >
             <span onClick={handleHomeClick} className="cursor-pointer w-auto h-16" >
-              <img src="/logo4.png" alt="Spark Lab Code" className="h-full w-auto" />
+              <img src="/logo_branca.png" alt="Spark Lab Code" className="h-full w-auto" />
             </span>
             
           </motion.div>
@@ -68,7 +68,7 @@ export default function Navigation() {
                 key={item.label}
                 variants={itemVariants}
                 href={item.href}
-                className="text-[#1e1c1c] font-medium hover:text-[#7c3aed] transition-colors duration-300 relative group"
+                className="text-[#e4e0d7] font-medium hover:text-[#7c3aed] transition-colors duration-300 relative group"
               >
                 {item.label}
                 <motion.span
@@ -112,7 +112,7 @@ export default function Navigation() {
                 variants={itemVariants}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="text-[#1e1c1c] font-medium hover:text-[#7c3aed] transition-colors duration-300"
+                className="text-[#e4e0d7] font-medium hover:text-[#7c3aed] transition-colors duration-300"
               >
                 {item.label}
               </motion.a>

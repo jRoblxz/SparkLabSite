@@ -27,7 +27,7 @@ const Button = () => {
               <span> </span>
               <span>MySQL</span>
             </div>
-            {skills.map((skill, index) => (
+            {/* {skills.map((skill, index) => (
               <div className="w-3/4 h-2 bg-slate-700 rounded-full mt-2">
                 <motion.div
                   className="h-full bg-[#044B6E] rounded-full"
@@ -37,7 +37,7 @@ const Button = () => {
                   viewport={{ once: true }}
                 />
               </div>
-            ))}
+            ))} */}
           </button>
         </div>
       </motion.div>

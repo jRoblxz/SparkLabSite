@@ -32,9 +32,9 @@ export function SkillsSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-            My <span className="bg-[#7C3AED] bg-clip-text text-transparent">Skills</span>
+            My Skills
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 **justify-items-center** **md:justify-items-start**">
             <StyeledPHP />
             <StyeledLaravel />
             <StyledPython />

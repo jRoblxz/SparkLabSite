@@ -42,7 +42,7 @@ function Portfólio() {
   };
 
   return (
-    <div className="min-h-screen bg-[#e4e0d7] text-[#1e1c1c]">
+    <div className="min-h-screen bg-[#1e1c1c] text-[#e4e0d7]">
       <Navigation />
 
       <main>
