@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Typewriter from "@/components/Typewriter/Typewriter";
-import avatarImg from "@/components/assets/Images/Avatar.jpeg";
+import avatarImg from "@/components/assets/Images/joao.png";
 
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
