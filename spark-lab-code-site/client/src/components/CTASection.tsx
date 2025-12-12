@@ -1,12 +1,12 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { useState } from 'react';
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useState } from "react";
 
 export default function CTASection() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (
@@ -20,28 +20,28 @@ export default function CTASection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({ name: '', email: '', message: '' });
+    console.log("Form submitted:", formData);
+    setFormData({ name: "", email: "", message: "" });
   };
 
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'contato@sparklabcode.com',
-      href: 'mailto:contato@sparklabcode.com',
+      label: "Email",
+      value: "contato@sparklabcode.com",
+      href: "mailto:contato@sparklabcode.com",
     },
     {
       icon: Phone,
-      label: 'Telefone',
-      value: '+55 (11) 99999-9999',
-      href: 'tel:+5511999999999',
+      label: "Telefone",
+      value: "+55 (11) 99999-9999",
+      href: "tel:+5511999999999",
     },
     {
       icon: MapPin,
-      label: 'Localização',
-      value: 'São Paulo, SP - Brasil',
-      href: '#',
+      label: "Localização",
+      value: "São Paulo, SP - Brasil",
+      href: "#",
     },
   ];
 
@@ -54,9 +54,9 @@ export default function CTASection() {
       <div
         className="absolute inset-0 opacity-5"
         style={{
-          backgroundImage: 'url(/cta-background.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: "url(/cta-background.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
 
@@ -73,8 +73,8 @@ export default function CTASection() {
             Vamos Trabalhar Juntos
           </h2>
           <p className="text-lg text-[#5a5753] max-w-2xl mx-auto">
-            Tem um projeto em mente? Entre em contato conosco e vamos transformar
-            suas ideias em realidade
+            Tem um projeto em mente? Entre em contato conosco e vamos
+            transformar suas ideias em realidade
           </p>
         </motion.div>
 
@@ -129,17 +129,41 @@ export default function CTASection() {
                 Siga-nos nas redes sociais
               </p>
               <div className="flex gap-4">
-                {['LinkedIn', 'GitHub', 'Twitter'].map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href="#"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-lg bg-[#1e1c1c] text-[#e4e0d7] flex items-center justify-center hover:bg-[#7c3aed] transition-colors duration-300"
+                <a
+                  href="https://github.com/jRoblxz" // URL correta
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Spotify"
+                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors" // Container principal
+                >
+                  {/* Elemento de fundo que fará a animação */}
+                  <span
+                    className="absolute bottom-0 left-0 h-0 w-full bg-[#24262a] transition-all duration-300 ease-in-out group-hover:h-full" // A mágica acontece aqui!
+                  ></span>
+
+                  {/* O Ícone SVG */}
+                  <svg
+                    className="relative z-10 h-6 w-6 text-slate-400 transition-colors group-hover:text-white" // Ícone fica acima do fundo
+                    viewBox="0 0 16 16"
                   >
-                    {social[0]}
-                  </motion.a>
-                ))}
+                    <path
+                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  href="mailto:joaopedro@example.com"
+                  className="group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212]  transition-colors"
+                >
+                  <span
+                    className="absolute bottom-0 left-0 h-0 w-full bg-[#d00909] transition-all duration-300 ease-in-out group-hover:h-full" // A mágica acontece aqui!
+                  ></span>
+                  <Mail
+                    className="relative z-10 h-6 w-6 text-slate-400 transition-colors group-hover:text-white"
+                    size={24}
+                  />
+                </a>
               </div>
             </motion.div>
           </motion.div>

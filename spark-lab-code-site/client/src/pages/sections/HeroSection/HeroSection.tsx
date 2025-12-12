@@ -117,7 +117,7 @@ export function HeroSection({ scrollToSection }: HeroSectionProps) {
               transition={{ delay: 1 }}
             >
               <a
-                href="https://www.spotify.com/" // URL correta
+                href="https://github.com/jRoblxz" // URL correta
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Spotify"

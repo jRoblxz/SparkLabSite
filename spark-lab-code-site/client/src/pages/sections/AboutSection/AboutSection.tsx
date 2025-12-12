@@ -28,11 +28,11 @@ export function AboutSection() {
             <div className="mt-8 pt-8 border-t border-[#1e1c1c]">
                 <h3 className="text-xl font-bold mb-4 text-[#1e1c1c]">Formação</h3>
                 <p className="text-[#1e1c1c]">
-                    <strong>Fatec - Faculdade de Tecnologia</strong>
+                    <strong>Fatec Presidente Prudente</strong>
                     <br />
                     Análise e Desenvolvimento de Sistemas
                     <br />
-                    <span className="text-[#1e1c1c]">Conclusão prevista: Meio de 2026</span>
+                    <span className="text-[#1e1c1c] font-light">Conclusão prevista: Meio de 2026</span>
                 </p>
             </div>
           </div>
