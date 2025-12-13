@@ -116,7 +116,7 @@ export default function HeroSection() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://www.google.com" // 👈 Coloque seu link aqui
+                href="https://joaoroblez.sparklab.dev.br/" // 👈 Coloque seu link aqui
                 target="_blank" // Abre em nova aba (opcional)
                 rel="noopener noreferrer" // Segurança para links externos
                 className="px-8 py-3 border-2 border-[#1e1c1c] text-[#1e1c1c] font-semibold rounded-lg hover:bg-[#1e1c1c] hover:text-[#e4e0d7] transition-all duration-300"
