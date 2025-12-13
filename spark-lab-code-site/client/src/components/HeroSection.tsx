@@ -113,14 +113,16 @@ export default function HeroSection() {
                 <ArrowRight size={20} />
               </motion.button>
 
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={handlePortfolioClick}
+                href="https://www.google.com" // 👈 Coloque seu link aqui
+                target="_blank" // Abre em nova aba (opcional)
+                rel="noopener noreferrer" // Segurança para links externos
                 className="px-8 py-3 border-2 border-[#1e1c1c] text-[#1e1c1c] font-semibold rounded-lg hover:bg-[#1e1c1c] hover:text-[#e4e0d7] transition-all duration-300"
               >
                 Ver Portfólio
-              </motion.button>
+              </motion.a>
             </motion.div>
           </motion.div>
 
