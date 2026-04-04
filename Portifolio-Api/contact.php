@@ -50,7 +50,7 @@ try {
     // Destinatários
     $mail->setFrom('joaoroblez76@gmail.com', 'Portfólio Contato');
     $mail->addReplyTo($email, $name); // Quem preencheu o formulário
-    $mail->addAddress('joaoroblez@sparklab.dev.br'); // Para onde vai o email
+    $mail->addAddress('contato@sparklab.dev.br'); // Para onde vai o email
 
     // Conteúdo
     $mail->isHTML(true);

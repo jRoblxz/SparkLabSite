@@ -54,13 +54,13 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h2 className="text-4xl font-bold text-[#e4e0d7]">
+            <h2 className="text-4xl font-bold text-[#7c3aed]">
               Construindo software com propósito.
             </h2>
-            <p className="text-lg text-[#5a5753] leading-relaxed">
+            <p className="text-lg text-[#e4e0d7] leading-relaxed">
               Minha jornada com tecnologia vai além de escrever código. Como estudante de Análise e Desenvolvimento de Sistemas e atuando profissionalmente em ambientes institucionais (Design Instrucional), aprendi que o melhor software é aquele que resolve problemas reais de pessoas reais.
             </p>
-            <p className="text-lg text-[#5a5753] leading-relaxed">
+            <p className="text-lg text-[#e4e0d7] leading-relaxed">
               Através da Spark, trago uma visão pragmática para o desenvolvimento web e mobile. Seja estruturando sistemas complexos em PHP/Laravel, criando interfaces modernas em React, ou explorando soluções inovadoras com Visão Computacional em Python, meu compromisso é entregar qualidade e transparência em cada linha de código.
             </p>
           </motion.div>

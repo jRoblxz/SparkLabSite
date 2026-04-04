@@ -7,15 +7,29 @@ export default function Footer() {
   const footerLinks = [
     {
       title: 'Empresa',
-      links: ['Sobre Nós', 'Blog', 'Carreiras', 'Contato'],
+      links: [
+        { name: 'Sobre Mim', href: '#about' },
+        { name: 'Contato', href: '#contact' },
+        { name: 'Projetos', href: '#portfolio' },
+      ],
     },
     {
       title: 'Serviços',
-      links: ['Web Development', 'Mobile Apps', 'Consultoria', 'Suporte'],
+      links: [
+        { name: 'Desenvolvimento Web', href: '#services' },
+        { name: 'Aplicativos Mobile', href: '#services' },
+        { name: 'Sistemas Institucionais', href: '#services' },
+        { name: 'IA & Visão Computacional', href: '#services' },
+      ],
     },
     {
-      title: 'Recursos',
-      links: ['Documentação', 'API', 'Comunidade', 'FAQ'],
+      title: 'Links Úteis',
+      links: [
+        { name: 'Portfólio', href: '#portfolio' },
+        { name: 'Contato', href: '#contact' },
+        { name: 'FAQ', href: '#' },
+        { name: 'Orçamento', href: '#' },
+      ],
     },
   ];
 
@@ -62,7 +76,7 @@ export default function Footer() {
           <motion.div variants={itemVariants} className="space-y-4">
             <div className="flex items-center gap-2">
               <Code2 size={28} className="text-[#7c3aed]" />
-              <span className="text-2xl font-bold">Spark Lab Code</span>
+              <span className="text-2xl font-bold">Spark</span>
             </div>
             <p className="text-[#d4d0c8]">
               Transformando ideias em soluções de software inovadoras e escaláveis.
@@ -77,11 +91,11 @@ export default function Footer() {
                 {section.links.map((link, i) => (
                   <li key={i}>
                     <motion.a
-                      href="#"
+                      href={link.href}
                       whileHover={{ x: 5 }}
                       className="text-[#d4d0c8] hover:text-[#7c3aed] transition-colors duration-300"
                     >
-                      {link}
+                      {link.name}
                     </motion.a>
                   </li>
                 ))}
@@ -108,7 +122,7 @@ export default function Footer() {
           className="flex flex-col md:flex-row justify-between items-center"
         >
           <motion.p variants={itemVariants} className="text-[#d4d0c8]">
-            © {currentYear} Spark Lab Code. Todos os direitos reservados.
+            © {currentYear} Spark. Todos os direitos reservados.
           </motion.p>
 
           <motion.div
@@ -140,5 +154,5 @@ export default function Footer() {
         </motion.div>
       </div>
     </footer>
-  );
+    );
 }
