@@ -149,8 +149,8 @@ export default function HeroSection() {
               transition={{ duration: 3, repeat: Infinity }}
               className="absolute -bottom-8 -left-8 bg-white p-4 rounded-lg shadow-lg"
             >
-              <p className="text-[#1e1c1c] font-semibold">100+ Projetos</p>
-              <p className="text-[#5a5753] text-sm">Entregues com sucesso</p>
+              <p className="text-[#1e1c1c] font-semibold">Foco em Performance</p>
+              <p className="text-[#5a5753] text-sm">Aplicações rápidas e modernas</p>
             </motion.div>
 
             <motion.div
@@ -158,8 +158,8 @@ export default function HeroSection() {
               transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
               className="absolute -top-8 -right-8 bg-[#7c3aed] text-white p-4 rounded-lg shadow-lg"
             >
-              <p className="font-semibold">5+ Anos</p>
-              <p className="text-sm opacity-90">De experiência</p>
+              <p className="font-semibold">Stack Moderna</p>
+              <p className="text-sm opacity-90">React, Laravel, React Native e +</p>
             </motion.div>
           </motion.div>
         </div>

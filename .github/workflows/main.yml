@@ -68,3 +68,33 @@ jobs:
             .htaccess
             config.php
             config.js
+
+      # 5️⃣ Setup PHP
+      - name: 🐘 Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      # 6️⃣ Install Composer dependencies (PHPMailer)
+      - name: 📦 Install Composer dependencies
+        working-directory: ./Portifolio-Api
+        run: |
+          rm -rf vendor 
+          composer install --no-dev --optimize-autoloader
+
+      # 5️⃣ Deploy do BACKEND
+      - name: 🐘 Deploy Backend (PHP API)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_SENHA }}
+          local-dir: ./Portifolio-Api/
+          server-dir: /public_html/api/
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/.env
+            **/node_modules/**
+            **/storage/**

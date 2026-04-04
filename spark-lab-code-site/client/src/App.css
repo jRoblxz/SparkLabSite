@@ -5,6 +5,7 @@
 
 @import "tailwindcss";
 
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -112,6 +113,26 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('./assets/Fonts/TT\ Chocolates\ Trial\ Regular.otf') format('otf'); /* Ajuste o nome do arquivo */
+  font-weight: 400;
+  font-style: normal;
+}
+
+@theme {
+  --font-spartan: "League Spartan", sans-serif;
+  --font-chocolates: "TT Chocolates", sans-serif;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

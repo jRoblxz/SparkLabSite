@@ -4,6 +4,7 @@ import ServicesSection from '@/components/ServicesSection';
 import PortfolioSection from '@/components/PortfolioSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import AboutSection from '@/components/AboutSection';
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
         <HeroSection />
         <ServicesSection />
         <PortfolioSection />
-        <CTASection />
+        {/* <CTASection />  */}
+        <AboutSection />
+        <CTASection /> 
       </main>
       <Footer />
     </div>

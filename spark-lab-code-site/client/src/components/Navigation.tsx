@@ -11,6 +11,7 @@ export default function Navigation() {
     { label: 'Serviços', href: '#services' },
     { label: 'Portfólio', href: '#portfolio' },
     { label: 'Contato', href: '#contact' },
+    { label: 'Sobre', href: '/sobre' }
   ];
 
   const containerVariants = {
