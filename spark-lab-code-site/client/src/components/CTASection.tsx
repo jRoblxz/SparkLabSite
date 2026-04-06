@@ -126,8 +126,8 @@ export default function CTASection() {
     {
       icon: Mail,
       label: t.contact.labels.email,
-      value: "joaoroblez@sparklab.dev.br",
-      href: "mailto:joaoroblez@sparklab.dev.br",
+      value: "contato@sparklab.dev.br",
+      href: "mailto:contato@sparklab.dev.br",
     },
     {
       icon: Phone,

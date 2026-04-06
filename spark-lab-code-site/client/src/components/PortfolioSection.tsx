@@ -1,64 +1,64 @@
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
-import Peneiras from '@/components/assets/Images/peneiras.png'
-import IA from '@/components/assets/Images/tracking.png'
-import Mobile from '@/components/assets/Images/mobile.png'
-import Jogo from '@/components/assets/Images/kpopgame.png'
 
 export default function PortfolioSection() {
   const projects = [
     {
       title: 'Plataforma de Gestão Esportiva',
-      description: 'Sistema completo desenvolvido para gerenciar e otimizar processos de avaliação e seleção em peneiras de futebol.',
+      description: 'Sistema completo (TCC) desenvolvido para gerenciar e otimizar processos de avaliação e seleção em peneiras de futebol.',
       tags: ['PHP', 'Laravel', 'React'],
-      image: Peneiras, // Substitua por um print do seu TCC
+      image: '/peneiras.png', // Substitua por um print do seu TCC
       link: 'https://projeto-tcc-jade.vercel.app/login',
       github: 'https://github.com/jRoblxz/Projeto_TCC',
     },
     {
       title: 'Sports Analytics Tracker',
-      description: 'Sistema de visão computacional capaz de mapear e rastrear coordenadas de jogadores em partidas de futebol em tempo real.',
-      tags: ['Python', 'OpenCV', 'YOLO', 'Roboflow'],
-      image: IA, // Substitua por um print do seu projeto de IA
+      description: 'Sistema inovador de visão computacional capaz de mapear e rastrear jogadores de hóquei em tempo real.',
+      tags: ['Python', 'OpenCV', 'YOLO', 'IA'],
+      image: '/tracking.png', // Substitua por um print do seu projeto de IA
       link: 'https://projeto-tcc-jade.vercel.app/login',
-      github: 'https://github.com/jRoblxz/Projeto_TCC',
+      github: 'https://github.com/jRoblxz/Sports-Analytics-Tracker',
     },
-    {
-      title: 'Aplicativo Mobile',
-      description: 'Desenvolvimento de aplicação mobile focada em performance e usabilidade para iOS e Android.',
-      tags: ['React Native', 'Mobile'],
-      image: '/pattern-accent.png',
-      link: '#',
-      github: '#',
-    },
+    // {
+    //   title: 'Aplicativo Mobile',
+    //   description: 'Desenvolvimento de aplicação mobile focada em performance e usabilidade para iOS e Android.',
+    //   tags: ['React Native', 'Mobile'],
+    //   image: '/pattern-accent.png',
+    //   link: 'https://github.com/jRoblxz/FirstProjectSpark',
+    //   github: 'https://github.com/jRoblxz/FirstProjectSpark',
+    // },
     {
       title: 'Jogo Web Interativo',
-      description: 'Aplicação web interativa com mecânicas de busca de palavras, focada na experiência do usuário e gerenciamento de estados.',
+      description: 'Aplicação web interativa focada na experiência do usuário e gerenciamento dinâmico de estados.',
       tags: ['React', 'Tailwind CSS', 'UI/UX'],
-      image: Jogo, // Substitua por um print do jogo de K-pop
+      image: '/kpopgame.png', // Substitua por um print do jogo
       link: 'https://word-search-kpop.vercel.app/',
       github: 'https://github.com/jRoblxz/word_search_kpop',
     },
   ];
 
-  const containerVariants = {
+  const containerVariants : Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
   };
 
-  const projectVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-    hover: { y: -10, transition: { duration: 0.3 } },
+  const projectVariants : Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
   };
 
   return (
-    <section id="portfolio" className="py-24  bg-[#e4e0d7] relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
+    <section id="portfolio" className="py-24 bg-[#1e1c1c] text-[#e4e0d7] relative overflow-hidden">
+      {/* Background patterns */}
+      <div className="absolute inset-0 opacity-5">
         <motion.div
-          className="absolute top-0 right-0 w-96 h-96 bg-[#7c3aed] rounded-full mix-blend-multiply filter blur-3xl opacity-10"
-          animate={{ x: [0, 100, 0], y: [0, -100, 0] }}
-          transition={{ duration: 15, repeat: Infinity as any }}
+          className="absolute w-full h-full"
+          animate={{ backgroundPosition: ['0px 0px', '100px 100px'] }}
+          transition={{ duration: 25, repeat: Infinity as any, ease: 'linear' }}
+          style={{
+            backgroundImage: 'linear-gradient(45deg, #7c3aed 1px, transparent 1px), linear-gradient(-45deg, #7c3aed 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+          }}
         />
       </div>
 
@@ -68,13 +68,13 @@ export default function PortfolioSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 space-y-4"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#e4e0d7] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold">
             Projetos em Destaque
           </h2>
-          <p className="text-lg text-[#d4d0c8] max-w-2xl mx-auto">
-            Soluções reais construídas com tecnologia moderna, focadas em performance e resolução de problemas.
+          <p className="text-xl text-[#d4d0c8] max-w-2xl mx-auto leading-relaxed">
+            Estudos de caso e inovações técnicas criadas com tecnologia moderna, focadas em performance e resolução de problemas.
           </p>
         </motion.div>
 
@@ -89,38 +89,39 @@ export default function PortfolioSection() {
             <motion.div
               key={index}
               variants={projectVariants}
-              whileHover="hover"
-              className="group relative overflow-hidden rounded-xl shadow-xl cursor-pointer"
+              whileHover={{ y: -10, rotate: [0, 1, 0] }}
+              className="group bg-white/5 rounded-3xl overflow-hidden shadow-2xl shadow-purple-950/10 border border-white/5 cursor-pointer relative"
             >
               <div className="relative h-80 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-[#1e1c1c]/80 transition-colors duration-300" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-[#7c3aed] scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
               </div>
 
-              <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
-                <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-[#e4e0d7] mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex flex-col justify-end p-8 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="text-3xl font-bold mb-3">{project.title}</h3>
+                <p className="text-[#d4d0c8] mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex flex-wrap gap-2.5 mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {project.tags.map((tag, i) => (
-                    <span key={i} className="px-3 py-1 bg-[#7c3aed] text-white text-xs rounded-full">
+                    <span key={i} className="px-4 py-1.5 bg-[#7c3aed]/20 text-[#e4e0d7] text-sm rounded-full border border-[#7c3aed]/30 font-medium">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-4 border-t border-white/10">
                   <motion.a
                     href={project.link}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#7c3aed] text-white rounded-lg hover:bg-[#6d28d9] transition-colors text-sm"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-[#7c3aed] text-white rounded-xl hover:bg-[#6d28d9] transition-colors text-sm font-medium shadow-lg shadow-[#7c3aed]/20"
                   >
                     Ver Detalhes <ExternalLink size={16} />
                   </motion.a>
@@ -128,7 +129,7 @@ export default function PortfolioSection() {
                     href={project.github}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-[#1e1c1c] transition-colors text-sm"
+                    className="flex items-center gap-2 px-5 py-2.5 border border-white/10 text-[#d4d0c8] rounded-xl hover:bg-white/5 transition-colors text-sm font-medium"
                   >
                     Código Fonte <Github size={16} />
                   </motion.a>

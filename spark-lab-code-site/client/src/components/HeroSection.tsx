@@ -1,168 +1,97 @@
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ArrowRight, Code2 } from 'lucide-react';
-import { useLocation } from 'wouter';
 
 export default function HeroSection() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
-
-  const floatingVariants = {
-    animate: {
-      y: [0, -20, 0],
-      transition: {
-        duration: 4,
-        repeat: Infinity as any,
-      },
-    },
-  };
-
-  // Use useLocation para obter a função navigate do Wouter
-  const [, navigate] = useLocation();
-
-  const handlePortfolioClick = () => {
-    navigate('/portifolio'); // Use a função navigate do Wouter
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
   };
 
   return (
-    <section
-      id="home"
-      className="min-h-screen bg-[#e4e0d7] pt-24 overflow-hidden relative"
-    >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-[#1e1c1c] text-[#e4e0d7] pt-20 relative overflow-hidden">
+      {/* Background Pattern - Modernized and Subtle */}
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
         <motion.div
-          className="absolute top-20 right-10 w-72 h-72 bg-[#7c3aed] rounded-full mix-blend-multiply filter blur-3xl opacity-10"
-        animate={{ x: [0, 50, 0], y: [0, -50, 0] }}
-        transition={{ duration: 8, repeat: Infinity as any }}
+          className="absolute w-full h-full"
+          animate={{ backgroundPosition: ['0px 0px', '100px 100px'] }}
+          transition={{ duration: 20, repeat: Infinity as any, ease: 'linear' }}
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(124, 58, 237, 0.2) 1px, rgba(0,0,0,0) 1px)',
+            backgroundSize: '30px 30px',
+          }}
         />
         <motion.div
-          className="absolute bottom-20 left-10 w-72 h-72 bg-[#1e1c1c] rounded-full mix-blend-multiply filter blur-3xl opacity-5"
-        animate={{ x: [0, -50, 0], y: [0, 50, 0] }}
-        transition={{ duration: 10, repeat: Infinity as any, delay: 1 }}
+          className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[#7c3aed] rounded-full mix-blend-screen filter blur-[150px] opacity-20"
+          animate={{ x: [-100, 100, -100], y: [-100, 100, -100] }}
+          transition={{ duration: 15, repeat: Infinity as any }}
         />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8"
-          >
-            <motion.div variants={itemVariants} className="space-y-4">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className="inline-flex items-center space-x-2 bg-[#f5f3f0] px-4 py-2 rounded-full"
-              >
-                <Code2 size={18} className="text-[#7c3aed]" />
-                <span className="text-[#1e1c1c] font-medium text-sm">
-                  Desenvolvimento de Software
-                </span>
-              </motion.div>
-
-              <h1 className="text-5xl md:text-6xl font-bold text-[#1e1c1c] leading-tight">
-                Transforme suas{' '}
-                <motion.span
-                  className="text-[#7c3aed]"
-                  animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  ideias
-                </motion.span>{' '}
-                em código
-              </h1>
-
-              <p className="text-lg text-[#5a5753] leading-relaxed">
-                Criamos soluções de software inovadoras e personalizadas para
-                transformar seu negócio. Com expertise em tecnologias modernas,
-                entregamos qualidade, performance e escalabilidade.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-[#1e1c1c] text-[#e4e0d7] font-semibold rounded-lg flex items-center justify-center gap-2 hover:bg-[#7c3aed] transition-colors duration-300"
-              >
-                Começar Projeto
-                <ArrowRight size={20} />
-              </motion.button>
-
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid md:grid-cols-2 gap-12 items-center"
+        >
+          {/* Content - Flutuando em um Glass Card */}
+          <motion.div variants={itemVariants} className="space-y-6 bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl shadow-purple-900/10">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+              Código que resolve. <span className="text-[#7c3aed] relative">Software que transforma.<span className="absolute bottom-1 left-0 w-full h-1 bg-[#7c3aed]"></span></span>
+            </h1>
+            <p className="text-xl text-[#d4d0c8] leading-relaxed">
+              Inovação técnica e design estratégico para dar vida à sua visão digital. Criamos sistemas inteligentes e interfaces que engajam.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://joaoroblez.sparklab.dev.br/" // 👈 Coloque seu link aqui
-                target="_blank" // Abre em nova aba (opcional)
-                rel="noopener noreferrer" // Segurança para links externos
-                className="px-8 py-3 border-2 border-[#1e1c1c] text-[#1e1c1c] font-semibold rounded-lg hover:bg-[#1e1c1c] hover:text-[#e4e0d7] transition-all duration-300"
+                href="#contact"
+                className="px-8 py-3.5 bg-[#7c3aed] text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[#6d28d9] transition-all duration-300 shadow-lg shadow-[#7c3aed]/30"
+              >
+                Começar Projeto <ArrowRight size={20} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#portfolio"
+                className="px-8 py-3.5 border-2 border-white/10 text-[#d4d0c8] font-semibold rounded-xl flex items-center justify-center hover:bg-white/5 transition-all duration-300"
               >
                 Ver Portfólio
               </motion.a>
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Right Image */}
-          <motion.div
-            variants={itemVariants}
-            className="relative h-96 md:h-full"
-          >
+          {/* Visual Element - Código e Spark */}
+          <motion.div variants={itemVariants} className="hidden md:flex justify-center relative">
             <motion.div
-              variants={floatingVariants}
-              animate="animate"
-              className="relative w-full h-full"
+              animate={{ rotate: [0, 5, 0], scale: [1, 1.02, 1] }}
+              transition={{ duration: 10, repeat: Infinity as any }}
+              className="w-96 h-96 border-4 border-[#7c3aed] rounded-full p-6 relative flex items-center justify-center group"
             >
-              <img
-                src="/hero-banner.png"
-                alt="Software Development"
-                className="w-full h-full object-cover rounded-2xl shadow-2xl"
+              <motion.div
+                className="absolute inset-0 bg-[#7c3aed]/10 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity"
               />
-            </motion.div>
-
-            {/* Floating Cards */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="absolute -bottom-8 -left-8 bg-white p-4 rounded-lg shadow-lg"
-            >
-              <p className="text-[#1e1c1c] font-semibold">Foco em Performance</p>
-              <p className="text-[#5a5753] text-sm">Aplicações rápidas e modernas</p>
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-              className="absolute -top-8 -right-8 bg-[#7c3aed] text-white p-4 rounded-lg shadow-lg"
-            >
-              <p className="font-semibold">Stack Moderna</p>
-              <p className="text-sm opacity-90">React, Laravel, React Native e +</p>
+              {/* <Code2 size={200} className="text-[#e4e0d7]/30" strokeWidth={1}/> */}
+               <img src="/5.png" alt="Spark Icon" className="w-50 h-50" />
+              <motion.div
+                className="absolute top-10 right-10 w-16 h-16 bg-[#7c3aed] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 5, repeat: Infinity as any, ease: 'linear' }}
+              >
+                <span className="text-4xl font-bold text-white">
+                  {/* <img src="/5.png" alt="Spark Icon" className="w-8 h-8" /> */}
+                  <Code2 size={40} className="text-[#e4e0d7]/30" strokeWidth={1}/>
+                </span>
+              </motion.div>
             </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
