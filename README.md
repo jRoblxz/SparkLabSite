@@ -65,3 +65,10 @@ npm install
 
 # Rode o projeto
 npm run dev
+
+
+```
+
+<div align="center">
+Desenvolvido por <strong>João Roblez</strong> • Sparklab Dev Code ⚡
+</div>
