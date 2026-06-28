@@ -5,6 +5,7 @@ import PortfolioSection from '@/components/PortfolioSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 import AboutSection from '@/components/AboutSection';
+import FeaturedProductSection from '@/components/FeaturedProductSection';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Navigation />
       <main className="flex-1">
         <HeroSection />
+        <FeaturedProductSection />
         <ServicesSection />
         <PortfolioSection />
         {/* <CTASection />  */}

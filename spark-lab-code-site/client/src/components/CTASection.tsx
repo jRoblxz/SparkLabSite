@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Check } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Check, Zap, Sparkles } from "lucide-react";
 import { useState } from "react";
-//import BtnVoltar from "@/components/ui/BtnVoltar";
 import "@fontsource/league-spartan/400.css";
 import "@fontsource/league-spartan/500.css";
 import "@fontsource/league-spartan/700.css";
-// import  Footer  from "@/components/Footer";
-import { useLanguage } from "@/contexts/LanguageContext"; // Importar hook
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function CTASection() {
-  const { t } = useLanguage(); // Usar hook
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,15 +22,11 @@ export default function CTASection() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setLoading(true);
     setError(null);
     setSuccess(false);
@@ -52,15 +46,10 @@ export default function CTASection() {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Erro no servidor");
-      }
+      if (!response.ok) throw new Error("Erro no servidor");
 
       const data = await response.json();
-
-      if (!data.success) {
-        throw new Error(data.message || "Erro ao enviar");
-      }
+      if (!data.success) throw new Error(data.message || "Erro ao enviar");
 
       setSuccess(true);
       setFormData({ name: "", email: "", Subject: "", message: "" });
@@ -68,46 +57,6 @@ export default function CTASection() {
       setError(err.message);
     } finally {
       setLoading(false);
-    }
-  };
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   setLoading(true);
-  //   setError(null);
-  //   setSuccess(false);
-
-  //   try {
-  //     // const response = await fetch("/api/vendor/contact.php", {
-  //     const response = await fetch("https://joaoroblez.sparklab.dev.br/api/contact.php", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "X-Requested-With": "XMLHttpRequest",
-  //       },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (!response.ok || !data.success) {
-  //       throw new Error(data.message || "Erro ao enviar mensagem");
-  //     }
-
-  //     setSuccess(true);
-  //     setFormData({ name: "", email: "", Subject: "", message: "" });
-  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   } catch (err: any) {
-  //     setError(err.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  const handleGoBack = () => {
-    if (typeof window !== "undefined") {
-      window.history.back();
     }
   };
 
@@ -121,7 +70,6 @@ export default function CTASection() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Movemos o array de contato para dentro do componente para acessar 't'
   const contactInfo = [
     {
       icon: Mail,
@@ -138,8 +86,8 @@ export default function CTASection() {
     {
       icon: Phone,
       label: "WhatsApp",
-      value: "+55 (14) 99665-3079",
-      href: "https://wa.me/5514996653079", // Ajustei o href para WhatsApp Web/App
+      value: "+55 (18) 99665-3079",
+      href: "https://wa.me/5518996653079",
     },
     {
       icon: MapPin,
@@ -152,22 +100,21 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="bg-[#e4e0d7] relative overflow-hidden font-spartan min-h-screen flex flex-col"
+      className="bg-[#e4e0d7] relative overflow-hidden font-spartan min-h-screen flex flex-col py-24"
     >
-      {/* <div className="absolute top-6 left-6 z-50">
-        <BtnVoltar onClick={handleGoBack} />
-      </div> */}
+      {/* Efeito de Faíscas no Fundo */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <Sparkles
+          className="absolute top-10 left-10 text-[#7c3aed]"
+          size={40}
+        />
+        <Sparkles
+          className="absolute bottom-20 right-20 text-[#7c3aed]"
+          size={60}
+        />
+      </div>
 
-      <div
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{
-          backgroundImage: "url(/cta-background.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-grow py-24 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-grow w-full">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -175,8 +122,8 @@ export default function CTASection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1e1c1c] mb-4">
-            {t.contact.title}
+          <h2 className="text-4xl md:text-5xl font-bold text-[#1e1c1c] mb-4 flex items-center justify-center gap-3">
+            <Zap className="text-[#7c3aed] fill-[#7c3aed]" /> {t.contact.title}
           </h2>
           <p className="text-lg text-[#5a5753] max-w-2xl mx-auto">
             {t.contact.subtitle}
@@ -202,10 +149,10 @@ export default function CTASection() {
                   key={index}
                   href={info.href}
                   whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-4 rounded-lg hover:bg-[#f5f3f0] transition-colors duration-300 cursor-pointer"
+                  className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-[#d4d0c8] hover:border-[#7c3aed] hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-[#7c3aed] text-white">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-[#7c3aed] text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]">
                       <Icon size={24} />
                     </div>
                   </div>
@@ -231,7 +178,7 @@ export default function CTASection() {
                 {t.contact.socialTitle}
               </p>
               <div className="flex gap-4">
-                {/* Botões Sociais (Github, Copy Email, etc) - Mantidos iguais */}
+                {/* Redes Sociais */}
                 <a
                   href="https://github.com/jRoblxz"
                   target="_blank"
@@ -250,18 +197,13 @@ export default function CTASection() {
                     ></path>
                   </svg>
                 </a>
-
                 <button
                   onClick={handleCopyEmail}
                   title={copied ? t.hero.emailCopied : t.hero.copyEmail}
                   className="cursor-pointer group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#131212] transition-colors border-none"
                 >
                   <span
-                    className={`absolute bottom-0 left-0 w-full transition-all duration-300 ease-in-out ${
-                      copied
-                        ? "bg-green-600 h-full"
-                        : "bg-[#d00909] h-0 group-hover:h-full"
-                    }`}
+                    className={`absolute bottom-0 left-0 w-full transition-all duration-300 ease-in-out ${copied ? "bg-green-600 h-full" : "bg-[#d00909] h-0 group-hover:h-full"}`}
                   ></span>
                   <div className="relative z-10">
                     {copied ? (
@@ -274,7 +216,6 @@ export default function CTASection() {
                     )}
                   </div>
                 </button>
-
                 <a
                   href="https://linkedin.com/in/joaoroblez"
                   target="_blank"
@@ -296,7 +237,6 @@ export default function CTASection() {
                     ></path>
                   </svg>
                 </a>
-
                 <a
                   href="https://www.instagram.com/joaoroblxz"
                   target="_blank"
@@ -322,104 +262,83 @@ export default function CTASection() {
             </motion.div>
           </motion.div>
 
+          {/* O Formulário Iluminado */}
           <motion.form
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="space-y-6 bg-[#1e1c1c] p-8 rounded-xl shadow-lg"
+            className="space-y-6 bg-[#1e1c1c] p-8 md:p-10 rounded-3xl shadow-2xl border-t-4 border-[#7c3aed]"
           >
-            <div>
-              <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
-                {t.contact.form.nameLabel}
-              </label>
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border text-[#e4e0d7] border-[#d4d0c8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300"
-                placeholder={t.contact.form.namePlaceholder}
-              />
-            </div>
+            {["name", "email", "Subject"].map(field => (
+              <div key={field}>
+                <label className="block text-sm font-bold text-[#e4e0d7] mb-2">
+                  {
+                    t.contact.form[
+                      `${field}Label` as keyof typeof t.contact.form
+                    ]
+                  }
+                </label>
+                <input
+                  type={field === "email" ? "email" : "text"}
+                  name={field}
+                  value={formData[field as keyof typeof formData]}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-5 py-3 bg-[#2a2828] border border-white/10 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all"
+                  placeholder={
+                    t.contact.form[
+                      `${field}Placeholder` as keyof typeof t.contact.form
+                    ]
+                  }
+                />
+              </div>
+            ))}
 
             <div>
-              <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
-                {t.contact.form.emailLabel}
-              </label>
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-[#d4d0c8] text-[#e4e0d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300"
-                placeholder={t.contact.form.emailPlaceholder}
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
-                {t.contact.form.SubjectLabel}
-              </label>
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="text"
-                name="Subject"
-                value={formData.Subject}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-[#d4d0c8] text-[#e4e0d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300"
-                placeholder={t.contact.form.SubjectPlaceholder}
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-[#e4e0d7] mb-2">
+              <label className="block text-sm font-bold text-[#e4e0d7] mb-2">
                 {t.contact.form.messageLabel}
               </label>
-              <motion.textarea
-                whileFocus={{ scale: 1.02 }}
+              <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={5}
-                className="w-full px-4 py-3 border border-[#d4d0c8] text-[#e4e0d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all duration-300 resize-none"
+                rows={4}
+                className="w-full px-5 py-3 bg-[#2a2828] border border-white/10 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7c3aed] transition-all resize-none"
                 placeholder={t.contact.form.messagePlaceholder}
               />
             </div>
+
             {loading && (
-              <p className="text-yellow-400 text-sm">Enviando mensagem...</p>
+              <p className="text-yellow-400 text-sm font-bold">
+                Processando requisição...
+              </p>
             )}
-
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-
+            {error && <p className="text-red-500 text-sm font-bold">{error}</p>}
             {success && (
-              <p className="text-green-500 text-sm">
-                Mensagem enviada com sucesso!
+              <p className="text-[#10b981] text-sm font-bold flex items-center gap-2">
+                <Check size={16} /> Mensagem enviada com sucesso!
               </p>
             )}
 
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: "0 0 25px rgba(124, 58, 237, 0.5)",
+              }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={loading}
-              className="w-full px-6 py-3 bg-[#7c3aed] text-white font-semibold rounded-lg hover:bg-[#6d28d9] transition-colors duration-300 flex items-center justify-center gap-2"
+              className="w-full py-4 bg-[#7c3aed] text-white font-bold rounded-xl hover:bg-[#6d28d9] transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(124,58,237,0.3)]"
             >
               {loading ? "Enviando..." : t.contact.form.btnSubmit}
-              <Send size={20} />
+              <Zap size={20} fill="white" />
             </motion.button>
           </motion.form>
         </div>
       </div>
-
-      {/* <Footer /> */}
     </section>
   );
 }

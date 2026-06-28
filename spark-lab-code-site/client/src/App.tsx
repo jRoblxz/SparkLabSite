@@ -4,15 +4,25 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import CustomCursor from "@/components/ui/CustomCursor";
+// Importações originais
+import Home from "@/pages/Home";
+import About from "@/pages/About";
 
+// 1. Importe as novas páginas (ajuste o caminho da pasta caso tenha salvo em outro lugar, como components)
+import TemperandinPage from "@/components/Projects/TemperandinPage";
+import BarberflowPage from "@/components/Projects/BarberflowPage";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/sobre"} component={About} />
+
+      {/* 2. Novas rotas comerciais para os Estudos de Caso */}
+      <Route path={"/projetos/temperandin"} component={TemperandinPage} />
+      <Route path={"/projetos/barberflow"} component={BarberflowPage} />
+
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

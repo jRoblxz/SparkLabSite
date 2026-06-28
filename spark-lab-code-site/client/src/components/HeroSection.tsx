@@ -1,5 +1,5 @@
 import { motion, Variants } from 'framer-motion';
-import { ArrowRight, Code2 } from 'lucide-react';
+import { ArrowRight, Code2, Zap } from 'lucide-react';
 
 export default function HeroSection() {
   const containerVariants: Variants = {
@@ -13,16 +13,20 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-[#1e1c1c] text-[#e4e0d7] pt-20 relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center bg-[#1e1c1c] text-[#e4e0d7] pt-20 relative overflow-hidden"
+    >
       {/* Background Pattern - Modernized and Subtle */}
       <div className="absolute inset-0 z-0 overflow-hidden opacity-10">
         <motion.div
           className="absolute w-full h-full"
-          animate={{ backgroundPosition: ['0px 0px', '100px 100px'] }}
-          transition={{ duration: 20, repeat: Infinity as any, ease: 'linear' }}
+          animate={{ backgroundPosition: ["0px 0px", "100px 100px"] }}
+          transition={{ duration: 20, repeat: Infinity as any, ease: "linear" }}
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(124, 58, 237, 0.2) 1px, rgba(0,0,0,0) 1px)',
-            backgroundSize: '30px 30px',
+            backgroundImage:
+              "radial-gradient(circle, rgba(124, 58, 237, 0.2) 1px, rgba(0,0,0,0) 1px)",
+            backgroundSize: "30px 30px",
           }}
         />
         <motion.div
@@ -40,21 +44,32 @@ export default function HeroSection() {
           className="grid md:grid-cols-2 gap-12 items-center"
         >
           {/* Content - Flutuando em um Glass Card */}
-          <motion.div variants={itemVariants} className="space-y-6 bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl shadow-purple-900/10">
+          <motion.div
+            variants={itemVariants}
+            className="space-y-6 bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl shadow-purple-900/10"
+          >
             <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              Código que resolve. <span className="text-[#7c3aed] relative">Software que transforma.<span className="absolute bottom-1 left-0 w-full h-1 bg-[#7c3aed]"></span></span>
+              Código que resolve.{" "}
+              <span className="text-[#7c3aed] relative">
+                Software que transforma.
+                <span className="absolute bottom-1 left-0 w-full h-1 bg-[#7c3aed]"></span>
+              </span>
             </h1>
             <p className="text-xl text-[#d4d0c8] leading-relaxed">
-              Inovação técnica e design estratégico para dar vida à sua visão digital. Criamos sistemas inteligentes e interfaces que engajam.
+              Inovação técnica e design estratégico para dar vida à sua visão
+              digital. Criamos sistemas inteligentes e interfaces que engajam.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <motion.a
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 0 30px rgba(124, 58, 237, 0.6)",
+                }}
                 whileTap={{ scale: 0.95 }}
                 href="#contact"
-                className="px-8 py-3.5 bg-[#7c3aed] text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[#6d28d9] transition-all duration-300 shadow-lg shadow-[#7c3aed]/30"
+                className="px-8 py-3.5 bg-[#7c3aed] text-white font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-[#6d28d9] transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.4)]"
               >
-                Começar Projeto <ArrowRight size={20} />
+                <Zap size={20} className="fill-white" /> Começar Projeto
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.05 }}
@@ -67,26 +82,45 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Visual Element - Código e Spark */}
-          <motion.div variants={itemVariants} className="hidden md:flex justify-center relative">
+          {/* Visual Element - Código e Spark (COM EFEITO PULSE) */}
+          <motion.div
+            variants={itemVariants}
+            className="hidden md:flex justify-center relative"
+          >
             <motion.div
               animate={{ rotate: [0, 5, 0], scale: [1, 1.02, 1] }}
-              transition={{ duration: 10, repeat: Infinity as any }}
-              className="w-96 h-96 border-4 border-[#7c3aed] rounded-full p-6 relative flex items-center justify-center group"
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+              className="w-96 h-96 border-4 border-[#7c3aed]/30 rounded-full p-6 relative flex items-center justify-center group"
             >
-              <motion.div
-                className="absolute inset-0 bg-[#7c3aed]/10 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity"
+              <motion.div className="absolute inset-0 bg-[#7c3aed]/10 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity" />
+
+              {/* Imagem da Faísca Pulsando com Glow */}
+              <motion.img
+                src="/5.png"
+                alt="Spark Icon"
+                className="w-48 h-48 md:w-56 md:h-56 object-contain relative z-10"
+                animate={{
+                  scale: [1, 1.08, 1],
+                  filter: [
+                    "drop-shadow(0px 0px 10px rgba(124,58,237,0.3))",
+                    "drop-shadow(0px 0px 35px rgba(124,58,237,0.8))",
+                    "drop-shadow(0px 0px 10px rgba(124,58,237,0.3))",
+                  ],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
-              {/* <Code2 size={200} className="text-[#e4e0d7]/30" strokeWidth={1}/> */}
-               <img src="/5.png" alt="Spark Icon" className="w-50 h-50" />
+
               <motion.div
-                className="absolute top-10 right-10 w-16 h-16 bg-[#7c3aed] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                className="absolute top-10 right-10 w-16 h-16 bg-[#7c3aed] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(124,58,237,0.5)]"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 5, repeat: Infinity as any, ease: 'linear' }}
+                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
               >
                 <span className="text-4xl font-bold text-white">
-                  {/* <img src="/5.png" alt="Spark Icon" className="w-8 h-8" /> */}
-                  <Code2 size={40} className="text-[#e4e0d7]/30" strokeWidth={1}/>
+                  <Code2 size={30} className="text-white" strokeWidth={2} />
                 </span>
               </motion.div>
             </motion.div>
