@@ -6,7 +6,7 @@ interface ImageCompareProps {
   afterImage: string;
   beforeLabel?: string;
   afterLabel?: string;
-}
+} //asd
 
 export default function ImageCompare({
   beforeImage,
